@@ -20,6 +20,8 @@ const routes = [
   { path: "/politica-privacidade", priority: 0.3, freq: "yearly" },
   { path: "/termos-condicoes", priority: 0.3, freq: "yearly" },
   { path: "/politica-cookies", priority: 0.3, freq: "yearly" },
+  { path: "/reclamacoes-arbitragem", priority: 0.3, freq: "yearly" },
+  { path: "/links-uteis", priority: 0.3, freq: "yearly" },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -3,7 +3,7 @@ import { CTASection } from "@/components/site/cta-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, X } from "lucide-react";
+import { Check, X, ShieldCheck, Globe, ExternalLink } from "lucide-react";
 import { headers } from "next/headers";
 import { site } from "@/lib/site-data";
 
@@ -59,6 +59,12 @@ const faqs = [
   {
     q: "O que fazer em caso de acidente?",
     a: "Registe o local, fotografe os veículos e os danos, preencha o boletim de constatação amigável com o outro interveniente e contacte-nos o mais rapidamente possível. Acompanhamos o registo do sinistro na seguradora, indicamos a documentação necessária e seguimos o processo até à liquidação.",
+    extraLink: {
+      label: "Carta Verde — circulação internacional",
+      description:
+        "Informação sobre o Sistema de Carta Verde, circulação no estrangeiro e proteção das vítimas de acidentes transfronteiriços.",
+      href: "https://gpcv.pt/conselho-de-gabinetes/",
+    },
   },
   {
     q: "Trabalham com todas as seguradoras?",
@@ -175,7 +181,9 @@ export default async function Page() {
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
             <img
-              src="/images/paginas/seguro-automovel.webp"
+              src="/images/paginas/seguro-automovel-640.webp"
+              srcSet="/images/paginas/seguro-automovel-640.webp 640w, /images/paginas/seguro-automovel.webp 1200w"
+              sizes="(min-width: 1024px) 50vw, 92vw"
               alt="Condutor a verificar o motor de um automóvel com o capô aberto"
               width={1200}
               height={675}
@@ -195,10 +203,58 @@ export default async function Page() {
             {faqs.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`}>
                 <AccordionTrigger className="text-left font-serif text-lg text-primary">{f.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">{f.a}</AccordionContent>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {f.a}
+                  {f.extraLink && (
+                    <a
+                      href={f.extraLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-4 text-sm transition-colors hover:border-primary/30 hover:bg-secondary/60"
+                    >
+                      <Globe className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-ink" aria-hidden="true" />
+                      <span>
+                        <span className="flex items-center gap-1.5 font-medium text-primary">
+                          {f.extraLink.label}
+                          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                        </span>
+                        <span className="mt-0.5 block text-muted-foreground">{f.extraLink.description}</span>
+                      </span>
+                    </a>
+                  )}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+
+      {/* APOIO EM CASO DE SINISTRO */}
+      <section className="py-16 border-t border-border">
+        <div className="container-rsf max-w-3xl">
+          <SectionTitle eyebrow="Apoio adicional" title="Apoio em caso de sinistro" />
+          <Card className="mt-8 border-border bg-secondary/40">
+            <CardContent className="flex items-start gap-4 p-6">
+              <ShieldCheck className="mt-0.5 h-6 w-6 flex-shrink-0 text-accent-ink" aria-hidden="true" />
+              <div>
+                <h3 className="font-serif text-lg text-primary mb-1">Fundo de Garantia Automóvel</h3>
+                <p className="mb-3 text-sm leading-relaxed text-foreground/80">
+                  Informação e apoio em situações abrangidas pelo Fundo de Garantia Automóvel,
+                  incluindo determinados acidentes com veículos sem seguro ou responsáveis
+                  desconhecidos.
+                </p>
+                <a
+                  href="https://www.fga.asf.com.pt/home"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                >
+                  Saber mais no site do FGA
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 

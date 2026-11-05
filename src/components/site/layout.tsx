@@ -1,34 +1,50 @@
-"use client";
-
+import { headers } from "next/headers";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
+import { SITE_URL } from "@/lib/site-url";
+import { JsonLdScript } from "@/components/site/json-ld-script";
 
 type Crumb = { label: string; href?: string };
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
-  const pathname = usePathname();
+export async function Breadcrumbs({ items }: { items: Crumb[] }) {
+  const nonce = (await headers()).get("x-nonce");
+  const allCrumbs: Crumb[] = [{ label: "Início", href: "/" }, ...items];
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: allCrumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.label,
+      // "item" omitido no último elemento (página atual) — opcional nas guidelines da Google.
+      ...(c.href ? { item: `${SITE_URL}${c.href}` } : {}),
+    })),
+  };
+
   return (
-    <nav aria-label="Breadcrumb" className="container-rsf py-4 text-sm">
-      <ol className="flex items-center gap-1.5 text-muted-foreground flex-wrap">
-        <li>
-          <Link href="/" className="hover:text-primary transition-colors">Início</Link>
-        </li>
-        {items.map((item, i) => {
-          const isLast = i === items.length - 1;
-          return (
-            <li key={i} className="flex items-center gap-1.5">
-              <ChevronRight className="w-3 h-3 opacity-50" />
-              {item.href && !isLast ? (
-                <Link href={item.href} className="hover:text-primary transition-colors">{item.label}</Link>
-              ) : (
-                <span className="text-foreground font-medium">{item.label}</span>
-              )}
-            </li>
-          );
-        })}
-      </ol>
-    </nav>
+    <>
+      <JsonLdScript nonce={nonce} json={JSON.stringify(schema)} />
+      <nav aria-label="Breadcrumb" className="container-rsf py-4 text-sm">
+        <ol className="flex items-center gap-1.5 text-muted-foreground flex-wrap">
+          <li>
+            <Link href="/" className="hover:text-primary transition-colors">Início</Link>
+          </li>
+          {items.map((item, i) => {
+            const isLast = i === items.length - 1;
+            return (
+              <li key={i} className="flex items-center gap-1.5">
+                <ChevronRight className="w-3 h-3 opacity-50" />
+                {item.href && !isLast ? (
+                  <Link href={item.href} className="hover:text-primary transition-colors">{item.label}</Link>
+                ) : (
+                  <span className="text-foreground font-medium">{item.label}</span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+    </>
   );
 }
 

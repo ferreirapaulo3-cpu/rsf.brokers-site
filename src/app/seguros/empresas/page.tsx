@@ -175,7 +175,9 @@ export default async function Page() {
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
             <img
-              src="/images/paginas/seguro-empresas.webp"
+              src="/images/paginas/seguro-empresas-640.webp"
+              srcSet="/images/paginas/seguro-empresas-640.webp 640w, /images/paginas/seguro-empresas.webp 1200w"
+              sizes="(min-width: 1024px) 50vw, 92vw"
               alt="Empresários numa oficina a analisar um projeto num tablet"
               width={1200}
               height={675}

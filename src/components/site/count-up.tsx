@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef } from "react";
 
-const DURATION_MS = 1200;
+const DURATION_MS = 3200;
 
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 2);
 

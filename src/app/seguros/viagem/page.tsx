@@ -175,7 +175,9 @@ export default async function Page() {
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
             <img
-              src="/images/paginas/seguro-viagem.webp"
+              src="/images/paginas/seguro-viagem-640.webp"
+              srcSet="/images/paginas/seguro-viagem-640.webp 640w, /images/paginas/seguro-viagem.webp 1200w"
+              sizes="(min-width: 1024px) 50vw, 92vw"
               alt="Viajante num aeroporto a olhar para o avião pela janela"
               width={1200}
               height={675}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShieldCheck, HeartHandshake, Scale, Users, Quote, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -74,10 +75,6 @@ export default async function SobrePage() {
                   <span className="text-foreground/80">RSF | Brokers em atividade desde junho de 2009</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <Calendar className="w-4 h-4 mt-0.5 text-accent-ink flex-shrink-0" />
-                  <span className="text-foreground/80">27 anos de experiência em mediação de seguros</span>
-                </div>
-                <div className="flex items-start gap-2.5">
                   <Users className="w-4 h-4 mt-0.5 text-accent-ink flex-shrink-0" />
                   <span className="text-foreground/80">Atendimento direto com o mediador</span>
                 </div>
@@ -145,13 +142,13 @@ export default async function SobrePage() {
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
-            <img
+            <Image
               src="/images/paginas/sobre.webp"
               alt="Mediador de seguros a analisar documentos com um cliente"
-              width={1200}
-              height={675}
+              fill
+              sizes="(min-width: 1024px) 45vw, 92vw"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="object-cover"
               style={{ objectPosition: "100% 50%" }}
             />
           </div>

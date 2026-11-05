@@ -23,7 +23,7 @@ const homeRamos = [
   { image: "/images/paginas/seguro-saude.webp", name: "Saúde e Vida", description: "Planos de saúde, vida risco e vida para crédito habitação.", href: "/seguros/saude" },
   { image: "/images/paginas/seguro-empresas.webp", name: "Empresas", description: "RC, multirriscos, acidentes de trabalho e frotas, à medida do negócio.", href: "/seguros/empresas" },
   { image: "/images/paginas/seguro-viagem.webp", name: "Viagem e Lazer", description: "Seguro de viagem, embarcações de recreio e caça.", href: "/seguros/viagem" },
-  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", name: "Crédito habitação", description: "Reduza a mensalidade com seguro de vida individual.", href: "/seguro-vida-credito-habitacao" },
+  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", name: "Seguro de vida do crédito habitação", description: "Reduza a mensalidade com seguro de vida individual.", href: "/seguro-vida-credito-habitacao" },
 ];
 
 export default function HomePage() {
@@ -63,7 +63,7 @@ export default function HomePage() {
             <div className="grid grid-cols-3 gap-6 mt-8 md:mt-9 pt-7 border-t border-primary-foreground/15">
               {heroStats.map((s) => (
                 <div key={s.label} className="hero-text text-center">
-                  <div className="font-serif text-[2.64rem] md:text-[3.18rem] leading-none text-accent"><CountUp end={s.value} suffix="+" /></div>
+                  <div className="font-serif text-[3.17rem] md:text-[3.82rem] leading-none text-accent"><CountUp end={s.value} suffix="+" /></div>
                   <div className="text-[0.8125rem] md:text-sm text-primary-foreground/80 mt-1.5 uppercase tracking-wider">{s.label}</div>
                 </div>
               ))}
@@ -141,7 +141,7 @@ export default function HomePage() {
             <img
               src="/images/credito-habitacao.webp"
               srcSet="/images/credito-habitacao-640.webp 640w, /images/credito-habitacao.webp 1024w"
-              sizes="(min-width: 1024px) 560px, 100vw"
+              sizes="(min-width: 1024px) 500px, 92vw"
               alt="Moradia unifamiliar com telhado de telha cerâmica e jardim"
               width={1024}
               height={572}

@@ -5,6 +5,7 @@ import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, X } from "lucide-react";
 import { headers } from "next/headers";
+import Image from "next/image";
 import { site } from "@/lib/site-data";
 
 export const metadata = {
@@ -174,13 +175,13 @@ export default async function Page() {
             <GoogleRatingBadge className="mt-4" />
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
-            <img
+            <Image
               src="/images/paginas/seguro-responsabilidade-civil.webp"
               alt="Mediador a analisar documentos de seguro com uma cliente"
-              width={1200}
-              height={675}
+              fill
+              sizes="(min-width: 1024px) 50vw, 92vw"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="object-cover"
               style={{ objectPosition: "90% 50%" }}
             />
           </div>

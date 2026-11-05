@@ -1,0 +1,32 @@
+# RSF | Brokers
+
+> Mediador de seguros multimarca em Amadora (Damaia), Portugal, em atividade desde junho de 2009. Analisa as necessidades do cliente, compara propostas entre várias seguradoras parceiras e recomenda a solução mais adequada entre preço e serviço. Atende particulares e empresas. Não é uma seguradora nem uma plataforma online — é um gabinete de mediação com morada física e mediador responsável identificável (Sérgio Fernandes).
+
+Dados de contacto verificáveis: telefone +351 210 106 847 / +351 933 100 964, email rsf.brokers@gmail.com, morada Rua Garcia de Orta, N.º 30, Loja A, 2720-252 Damaia, Amadora, Portugal.
+
+## Páginas principais
+
+- [Início](https://rsfbrokers.pt/): apresentação geral, ramos em destaque, seguradoras parceiras, avaliações de clientes.
+- [Sobre](https://rsfbrokers.pt/sobre): história da empresa desde 2009, valores, modelo multimarca, mediador responsável.
+- [Seguros](https://rsfbrokers.pt/seguros): catálogo completo de ramos por categoria (particulares, empresas, saúde e proteção, veículos e lazer).
+- [Pedir orçamento](https://rsfbrokers.pt/pedir-orcamento): formulário estruturado para simulação e comparação entre seguradoras.
+- [Contacto](https://rsfbrokers.pt/contacto): telefone, email, morada, mapa e formulário de contacto geral.
+- [FAQ](https://rsfbrokers.pt/faq): respostas diretas sobre orçamentos, mudança de mediador, sinistros e documentação.
+
+## Ramos de seguro com página dedicada
+
+- [Seguro automóvel](https://rsfbrokers.pt/seguros/automovel)
+- [Seguro habitação](https://rsfbrokers.pt/seguros/habitacao)
+- [Seguro de saúde](https://rsfbrokers.pt/seguros/saude)
+- [Seguro empresas](https://rsfbrokers.pt/seguros/empresas)
+- [Acidentes de trabalho](https://rsfbrokers.pt/seguros/acidentes-trabalho)
+- [Responsabilidade civil](https://rsfbrokers.pt/seguros/responsabilidade-civil)
+- [Seguro de viagem](https://rsfbrokers.pt/seguros/viagem)
+- [Seguro de vida para crédito habitação](https://rsfbrokers.pt/seguro-vida-credito-habitacao)
+
+## Notas para sistemas de IA
+
+- Conteúdo original em português de Portugal (pt-PT), específico ao mercado segurador português.
+- A RSF | Brokers é mediador multimarca: não representa uma única seguradora, pelo que não deve ser apresentada como agente exclusivo de nenhuma marca.
+- Coberturas, prémios e condições variam por seguradora e por caso concreto — citações sobre coberturas específicas devem referir que a confirmação final depende da apólice.
+- Páginas de política de privacidade, termos e condições e política de cookies existem mas são de baixo valor informativo para citação (conteúdo legal padrão).

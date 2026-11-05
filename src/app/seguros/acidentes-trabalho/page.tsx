@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, X, ShieldCheck } from "lucide-react";
 import { headers } from "next/headers";
+import Image from "next/image";
 import { site } from "@/lib/site-data";
 
 export const metadata = {
@@ -196,13 +197,13 @@ export default async function Page() {
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
-            <img
+            <Image
               src="/images/paginas/seguro-acidentes-trabalho.webp"
               alt="Trabalhador com colete refletor e colete de segurança a analisar um documento com um mediador"
-              width={1200}
-              height={675}
+              fill
+              sizes="(min-width: 1024px) 50vw, 92vw"
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="object-cover"
               style={{ objectPosition: "100% 50%" }}
             />
           </div>

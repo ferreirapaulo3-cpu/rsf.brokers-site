@@ -175,7 +175,9 @@ export default async function Page() {
           </div>
           <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
             <img
-              src="/images/paginas/seguro-habitacao.webp"
+              src="/images/paginas/seguro-habitacao-640.webp"
+              srcSet="/images/paginas/seguro-habitacao-640.webp 640w, /images/paginas/seguro-habitacao.webp 1200w"
+              sizes="(min-width: 1024px) 50vw, 92vw"
               alt="Moradia com telhado de telha cerâmica e jardim"
               width={1200}
               height={675}

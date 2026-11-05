@@ -59,3 +59,7 @@ server.log
 cloudflare-env.d.ts
 
 .vercel
+/dist/
+.vinext/
+.cloudflare/
+.hallmark/

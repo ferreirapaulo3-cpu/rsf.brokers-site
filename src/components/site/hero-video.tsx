@@ -15,41 +15,26 @@ export function HeroVideo() {
     const video = videoRef.current;
     if (!video) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const conn = (
-      navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string; downlink?: number } }
-    ).connection;
-    // Poupança de dados ou rede lenta (2G/3G, ou menos de 1,5 Mbit/s): fica só a imagem.
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     if (conn?.saveData) return;
-    if (conn?.effectiveType && /^(slow-2g|2g|3g)$/.test(conn.effectiveType)) return;
-    if (conn?.downlink !== undefined && conn.downlink > 0 && conn.downlink < 1.5) return;
 
     const small = window.matchMedia("(max-width: 767px)").matches;
-    const size = small ? "480" : "720";
-    const ext = video.canPlayType('video/webm; codecs="vp9"') ? "webm" : "mp4";
-    video.src = `/video/hero-${size}.${ext}`;
+    const size = small ? "720" : "1080";
+    // AV1 (mais leve, mesma qualidade) > VP9 > H.264.
+    const file = video.canPlayType('video/mp4; codecs="av01.0.08M.08"')
+      ? `hero-${size}-av1.mp4`
+      : video.canPlayType('video/webm; codecs="vp9"')
+        ? `hero-${size}.webm`
+        : `hero-${size}.mp4`;
+    video.src = `/video/${file}`;
     video.load();
     video.play().catch(() => {});
-
-    // Se não arrancar em 8 s (rede lenta sem sinal da API, ex. Safari), cancela o pedido e
-    // mantém a imagem.
-    const timer = window.setTimeout(() => {
-      if (video.readyState < 3) {
-        video.removeAttribute("src");
-        video.load();
-      }
-    }, 8000);
-    const clear = () => window.clearTimeout(timer);
-    video.addEventListener("playing", clear, { once: true });
-    return () => {
-      clear();
-      video.removeEventListener("playing", clear);
-    };
   }, []);
 
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
       <picture>
-        <source media="(max-width: 767px)" srcSet="/video/hero-poster-480.webp" />
+        <source media="(max-width: 767px)" srcSet="/video/hero-poster-sm.webp" />
         <img
           src="/video/hero-poster.webp"
           alt=""

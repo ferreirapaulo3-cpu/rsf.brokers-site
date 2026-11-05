@@ -135,7 +135,9 @@ export default async function Page() {
           <div className="space-y-6">
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10">
               <img
-                src="/images/paginas/seguro-vida-credito-habitacao.webp"
+                src="/images/paginas/seguro-vida-credito-habitacao-640.webp"
+                srcSet="/images/paginas/seguro-vida-credito-habitacao-640.webp 640w, /images/paginas/seguro-vida-credito-habitacao.webp 1200w"
+                sizes="(min-width: 1024px) 50vw, 92vw"
                 alt="Casal a olhar pela janela da futura casa"
                 width={1200}
                 height={675}

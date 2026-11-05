@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { SITE_URL } from "@/lib/site-url";
-import { site, partners, insuranceTypes, googleRating, googleReviews } from "@/lib/site-data";
+import { site, partners, insuranceTypes, googleReviewsUrl } from "@/lib/site-data";
 
 
 /** Dados estruturados do negócio local (uma só vez, em todas as páginas). */
@@ -31,7 +31,12 @@ export async function LocalBusinessJsonLd() {
         telephone: [site.phones.fixedHref, site.phones.mobileHref],
         email: site.email,
         foundingDate: "2009-06",
-        founder: { "@type": "Person", name: site.responsible },
+        founder: {
+          "@type": "Person",
+          name: site.responsible,
+          jobTitle: "Mediador responsável",
+          worksFor: { "@id": `${SITE_URL}/#agency` },
+        },
         address: {
           "@type": "PostalAddress",
           streetAddress: site.address.line1,
@@ -55,20 +60,12 @@ export async function LocalBusinessJsonLd() {
           { "@type": "Country", name: "Portugal" },
         ],
         knowsAbout: partners,
-        sameAs: [site.facebook],
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: googleRating.value,
-          reviewCount: googleRating.count,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        review: googleReviews.map((r) => ({
-          "@type": "Review",
-          author: { "@type": "Person", name: r.author },
-          reviewBody: r.text,
-          reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-        })),
+        // Sem aggregateRating/review aqui: dados copiados do Google não são verificáveis
+        // por este schema (não há integração com a API do Google que os ateste em tempo
+        // real) — marcação de reviews de terceiros sem essa verificação viola as guidelines
+        // de structured data da Google e arrisca desqualificação de rich results. O rating
+        // continua visível na página (ver GoogleRatingBadge) com link direto para o Google.
+        sameAs: [site.facebook, googleReviewsUrl],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Seguros",

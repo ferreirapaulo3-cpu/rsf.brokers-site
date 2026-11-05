@@ -54,12 +54,9 @@ export function SiteHeader() {
 
       {/* Main nav */}
       <div className={cn("bg-background/95 backdrop-blur border-b transition-all", scrolled ? "border-border shadow-sm" : "border-transparent")}>
-        <div className="container-rsf flex items-center justify-between h-20">
+        <div className="container-rsf flex items-center justify-between h-20 xl:h-24">
           <Link href="/" className="flex items-center gap-3 xl:mr-6" aria-label="RSF Brokers — Início">
-            <picture>
-              <source media="(min-width: 1280px)" srcSet="/rsf-brokers-web.webp" width={1500} height={485} />
-              <img src="/rsf-brokers.webp" alt="RSF | Brokers — Negócios Seguros" width={720} height={342} className="h-[4.25rem] w-auto max-w-[10.5rem] object-contain object-left xl:max-w-none" />
-            </picture>
+            <img src="/rsf-brokers.svg" alt="RSF | Brokers — Negócios Seguros" width={1584} height={672} className="h-[4.25rem] xl:h-[5.25rem] w-auto object-contain object-left" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -92,7 +89,7 @@ export function SiteHeader() {
               <SheetContent side="right" className="w-72 max-w-[80%] p-0">
                 <SheetTitle className="sr-only">Menu de navegação</SheetTitle>
                 <SheetHeader className="flex-row items-center justify-between p-4 border-b space-y-0">
-                  <img src="/rsf-brokers.webp" alt="RSF | Brokers — Negócios Seguros" width={720} height={342} className="h-12 w-auto max-w-[10rem] object-contain object-left" />
+                  <img src="/rsf-brokers.svg" alt="RSF | Brokers — Negócios Seguros" width={1584} height={672} className="h-12 w-auto max-w-[10rem] object-contain object-left" />
                 </SheetHeader>
                 <nav className="flex-1 flex flex-col gap-1 p-4">
                   {nav.map((item) => (

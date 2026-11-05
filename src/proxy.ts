@@ -48,6 +48,12 @@ export function proxy(request: NextRequest) {
   response.headers.set("X-Frame-Options", "SAMEORIGIN");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  // HSTS só em produção: exige que o domínio sirva sempre HTTPS (reverse proxy da VPS,
+  // conforme PREVIEW.md). max-age moderado (6 meses) e sem includeSubDomains/preload —
+  // alargar só depois de confirmar em produção real que não há regressão para HTTP.
+  if (!isDev) {
+    response.headers.set("Strict-Transport-Security", "max-age=15552000");
+  }
   return response;
 }
 

@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, FileDown } from "lucide-react";
 import { PageHeader, Breadcrumbs } from "@/components/site/layout";
 import { CTASection } from "@/components/site/cta-section";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -102,6 +102,19 @@ export default async function FaqPage() {
                   </AccordionTrigger>
                   <AccordionContent className="text-base text-foreground/80 leading-relaxed">
                     {f.a}
+                    {f.attachment && (
+                      <a
+                        href={f.attachment.href}
+                        download="Pedido_de_Mudanca_de_Mediacao_RSF_Brokers.pdf"
+                        className="mt-4 flex items-start gap-3 rounded-lg border border-border bg-secondary/40 p-4 text-sm transition-colors hover:border-primary/30 hover:bg-secondary/60"
+                      >
+                        <FileDown className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent-ink" aria-hidden="true" />
+                        <span>
+                          <span className="block font-medium text-primary">{f.attachment.label}</span>
+                          <span className="mt-0.5 block text-muted-foreground">{f.attachment.description}</span>
+                        </span>
+                      </a>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}

@@ -20,7 +20,7 @@ export const site = {
     mobileHref: "+351933100964",
   },
   email: "rsf.brokers@gmail.com",
-  facebook: "https://www.facebook.com/profile.php?id=100057524974999",
+  facebook: "https://www.facebook.com/p/RSF-Brokers-Neg%C3%B3cios-Seguros-100057524974999/",
   mapsEmbed:
     "https://www.google.com/maps?q=Rua+Garcia+de+Orta+30+2720-252+Damaia+Amadora&output=embed",
 };
@@ -29,7 +29,7 @@ export const nav = [
   { label: "Início", href: "/" },
   { label: "Sobre", href: "/sobre" },
   { label: "Seguros", href: "/seguros" },
-  { label: "Crédito habitação", href: "/seguro-vida-credito-habitacao" },
+  { label: "Seguro de vida do crédito habitação", href: "/seguro-vida-credito-habitacao" },
   { label: "Pedir orçamento", href: "/pedir-orcamento" },
   { label: "Contacto", href: "/contacto" },
   { label: "FAQ", href: "/faq" },
@@ -58,14 +58,14 @@ export const partnerLogos: Record<string, PartnerLogo> = {
   "Caravela Seguros": { src: "/images/seguradoras/caravela.svg", width: 247, height: 67, maxWidthRem: 9 },
   "Lusitânia Seguros": { src: "/images/seguradoras/lusitania.webp", width: 226, height: 34, maxWidthRem: 9.5 },
   "Ageas Seguros": { src: "/images/seguradoras/ageas.svg", width: 489, height: 167, maxWidthRem: 7.5 },
-  "Una Seguros": { src: "/images/seguradoras/una.webp", width: 372, height: 222, maxWidthRem: 5.5 },
+  "Una Seguros": { src: "/images/seguradoras/una.webp", width: 240, height: 143, maxWidthRem: 5.5 },
   "April Seguros": { src: "/images/seguradoras/april.svg", width: 112, height: 26, maxWidthRem: 8 },
-  "Prévoir Seguros": { src: "/images/seguradoras/prevoir.webp", width: 900, height: 332, maxWidthRem: 9 },
-  "Saúde Prime": { src: "/images/seguradoras/saude-prime.webp", width: 900, height: 198, maxWidthRem: 11 },
-  "ARAG": { src: "/images/seguradoras/arag.webp", mono: "/images/seguradoras/arag-mono.webp", width: 589, height: 589, maxWidthRem: 3.5 },
+  "Prévoir Seguros": { src: "/images/seguradoras/prevoir.webp", width: 320, height: 118, maxWidthRem: 9 },
+  "Saúde Prime": { src: "/images/seguradoras/saude-prime.webp", width: 400, height: 88, maxWidthRem: 11 },
+  "ARAG": { src: "/images/seguradoras/arag.webp", mono: "/images/seguradoras/arag-mono.webp", width: 128, height: 128, maxWidthRem: 3.5 },
   "Médis": { src: "/images/seguradoras/medis.svg", mono: "/images/seguradoras/medis-mono.svg", width: 132, height: 88, maxWidthRem: 4.5 },
   "Advance Care": { src: "/images/seguradoras/advancecare.svg", width: 1024, height: 256, maxWidthRem: 9 },
-  "Victoria Seguros": { src: "/images/seguradoras/victoria.webp", width: 900, height: 95, maxWidthRem: 9.5 },
+  "Victoria Seguros": { src: "/images/seguradoras/victoria.webp", width: 320, height: 34, maxWidthRem: 9.5 },
 };
 
 export type Insurance = {
@@ -166,6 +166,12 @@ export const faqs = [
   {
     q: "É possível mudar de mediador mantendo o mesmo seguro?",
     a: "Sim. A nomeação do mediador pode ser alterada em qualquer altura, mantendo o mesmo contrato de seguro, as mesmas coberturas e o mesmo prémio. O processo é simples: assina um documento de nomeação e o novo mediador trata da comunicação à seguradora. Não há penalizações nem mudança de coberturas.",
+    attachment: {
+      href: "/output/Pedido_de_Mudanca_de_Mediacao_RSF_Brokers.pdf",
+      label: "Pedido de Mudança de Mediação — RSF | Brokers",
+      description:
+        "Documento para solicitar a mudança de mediador para a RSF | Brokers, mantendo o contrato de seguro atual.",
+    },
   },
   {
     q: "O seguro de vida do crédito habitação tem de ser contratado no banco?",
