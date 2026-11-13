@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/site/contact-form";
+import { LazyMap } from "@/components/site/lazy-map";
 import { site } from "@/lib/site-data";
 
 export const metadata = {
@@ -167,21 +168,10 @@ export default function ContactoPage() {
           {/* RIGHT: Google Maps */}
           <div>
             <h3 className="font-serif text-2xl text-primary mb-6">Onde estamos</h3>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden border border-border shadow-sm bg-secondary">
-              <iframe
-                src={site.mapsEmbed}
-                title="Mapa interativo com a localização da RSF | Brokers na Rua Garcia de Orta, Damaia, Amadora"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+            <LazyMap />
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-              O mapa é fornecido pelo Google Maps. Ao clicar nele, sai do website da RSF | Brokers
-              e passa a estar sujeito à{" "}
+              O mapa é fornecido pelo Google Maps e só é carregado após o clique em
+              &ldquo;Ver mapa&rdquo;. Ao carregá-lo, passa a estar sujeito à{" "}
               <Link href="/politica-cookies" className="text-primary underline">
                 Política de cookies
               </Link>{" "}

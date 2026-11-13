@@ -106,12 +106,12 @@ export default function SegurosPage() {
       })}
 
       {/* Serviços complementares */}
-      <section className="py-20">
+      <section id="outros-servicos" className="py-20 scroll-mt-32">
         <div className="container-rsf">
           <SectionTitle
             eyebrow="Outros serviços"
             title="Mais do que seguros — soluções do dia-a-dia"
-            description="A RSF | Brokers disponibiliza ainda um conjunto de serviços complementares, em parceria. Disponibilidade atual sujeita a confirmação."
+            description="A RSF | Brokers disponibiliza ainda um conjunto de serviços complementares, em parceria."
           />
           <div className="grid mt-12 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
             {[
@@ -124,7 +124,6 @@ export default function SegurosPage() {
               "Certificados energéticos",
               "Contratos de telecomunicações",
               "Contratos de eletricidade",
-              "Cartões de crédito",
             ].map((s) => (
               <div key={s} className="bg-secondary/40 border border-border rounded-md p-4 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
@@ -132,9 +131,20 @@ export default function SegurosPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mt-6">
-            Lista de serviços complementares sujeita a confirmação de disponibilidade atual antes da publicação.
-          </p>
+
+          <div className="mt-14">
+            <h3 className="font-serif text-xl text-primary mb-4">Empresas parceiras</h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {[1, 2, 3].map((n) => (
+                <div
+                  key={n}
+                  className="bg-secondary/30 border border-dashed border-border rounded-md p-6 flex items-center justify-center text-sm text-muted-foreground"
+                >
+                  Parceiro em breve
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

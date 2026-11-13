@@ -14,11 +14,7 @@ export const metadata = {
 };
 
 const cookieTable = [
-  { nome: "_ga, _ga_*", tipo: "Analítico", finalidade: "Estatísticas de utilização (Google Analytics 4)", duracao: "2 anos", fornecedor: "Google LLC" },
-  { nome: "_gid", tipo: "Analítico", finalidade: "Distinguir utilizadores", duracao: "24 horas", fornecedor: "Google LLC" },
-  { nome: "cookie_consent", tipo: "Funcional", finalidade: "Registar o consentimento de cookies", duracao: "12 meses", fornecedor: "RSF | Brokers" },
-  { nome: "session_id", tipo: "Necessário", finalidade: "Manter a sessão de navegação", duracao: "Sessão", fornecedor: "RSF | Brokers" },
-  { nome: "MapEmbed", tipo: "Funcional", finalidade: "Memorizar preferências do mapa de contacto", duracao: "Sessão", fornecedor: "RSF | Brokers" },
+  { nome: "NID, 1P_JAR, outros", tipo: "Terceiros", finalidade: "Cookies definidos pela Google ao carregar o mapa incorporado na página de Contacto", duracao: "Variável (definida pela Google)", fornecedor: "Google LLC" },
 ];
 
 const legalSections = [
@@ -72,11 +68,11 @@ export default function PoliticaCookiesPage() {
               1. O que são cookies
             </h2>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              Cookies são pequenos ficheiros de texto que o website que visita guarda no
-              navegador do utilizador. Permitem ao site reconhecer o utilizador entre páginas e
-              visitas, manter sessões ativas, recordar preferências e recolher indicadores
-              estatísticos de utilização. Os cookies não contêm, em si, dados pessoais do
-              utilizador, mas podem ser associados a dados pessoais tratados pelo website.
+              Cookies são pequenos ficheiros de texto que um website guarda no navegador do
+              utilizador. Permitem a um site reconhecer o utilizador entre páginas e visitas,
+              manter sessões ativas ou recordar preferências. Os cookies não contêm, em si,
+              dados pessoais do utilizador, mas podem ser associados a dados pessoais tratados
+              pelo website ou pelo terceiro que os define.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4">
               A utilização de cookies está sujeita ao regime do RGPD e da Lei n.º 58/2019, de
@@ -90,25 +86,14 @@ export default function PoliticaCookiesPage() {
               2. Cookies utilizados
             </h2>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              O website da RSF | Brokers utiliza as seguintes categorias de cookies:{" "}
-              <strong>Necessários/Técnicos</strong>, indispensáveis ao funcionamento básico do
-              site — sessão de navegação, segurança e formulários; <strong>Analíticos</strong>,
-              que permitem recolher estatísticas de utilização agregadas e anónimas, com
-              recurso ao Google Analytics 4, com IP anonimizado e sujeitos a consentimento;{" "}
-              <strong>Funcionais</strong>, que memorizam preferências do utilizador, como a
-              escolha do banner de consentimento; e <strong>Marketing</strong>, não utilizados
-              por defeito, em linha com a opção por não ceder dados a terceiros para campanhas
-              comerciais.
+              O website da RSF | Brokers <strong>não utiliza cookies de analítica (como Google
+              Analytics) nem cookies próprios</strong> de qualquer tipo — não existem cookies
+              funcionais, de sessão ou de preferências definidos por este website. A única
+              origem de cookies é o mapa do Google incorporado na página de Contacto, descrito
+              no ponto 4.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              Em particular, o Google Analytics 4 utilizado por este website recolhe a
-              informação de utilização com IP anonimizado, ou seja, o endereço IP do utilizador
-              é truncado antes de ser guardado, de modo a não permitir a identificação direta
-              do titular. A recolha deste tipo de cookies só é ativada após consentimento
-              expresso do utilizador no banner de consentimento.
-            </p>
-            <p className="text-foreground/80 leading-relaxed mb-4">
-              A tabela seguinte resume os cookies atualmente em utilização neste website. Esta
+              A tabela seguinte resume os cookies atualmente associados a este website. Esta
               lista pode ser atualizada sempre que haja alteração nos serviços prestados por
               terceiros.
             </p>
@@ -149,38 +134,30 @@ export default function PoliticaCookiesPage() {
               cookies de sessão ou apagar todos os cookies ao fechar o navegador.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              A desativação de cookies estritamente necessários ao funcionamento do site pode
-              prejudicar a experiência do utilizador — em particular, a submissão de formulários
-              e a navegação segura entre páginas. A desativação de cookies analíticos não afeta
-              o funcionamento básico do site, apenas a possibilidade de o site recolher
-              indicadores de utilização.
-            </p>
-            <p className="text-foreground/80 leading-relaxed mb-4">
-              A RSF | Brokers tem planeado disponibilizar um banner de consentimento que
-              permita ao utilizador aceitar ou recusar cookies não essenciais no momento do
-              primeiro acesso ao site. Até à entrada em vigor desse banner, em linha com o
-              princípio da minimização, os cookies analíticos são mantidos desativados por
-              defeito, sendo ativados apenas após consentimento expresso do utilizador.
+              Como este website não define cookies próprios, a gestão feita no navegador diz
+              respeito apenas ao cookie de terceiro associado ao mapa do Google, descrito no
+              ponto seguinte. O utilizador pode bloquear cookies de terceiros no navegador sem
+              afetar o funcionamento do resto do site.
             </p>
 
             <h2 id="cookies-terceiros" className="font-serif text-2xl text-primary mb-3 mt-10 scroll-mt-32">
               4. Cookies de terceiros
             </h2>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              O website da RSF | Brokers recorre a cookies de terceiros em duas situações
-              específicas: para recolha de estatísticas de utilização, através do Google
-              Analytics 4, conforme indicado no ponto anterior; e para a apresentação do mapa
-              de localização na página de contacto, através do embed do Google Maps. Ambos os
-              serviços são prestados pela Google LLC, enquanto responsável autónomo pelo
-              tratamento dos dados recolhidos através das suas tecnologias.
+              O website da RSF | Brokers recorre a cookies de terceiros apenas numa situação: a
+              apresentação do mapa de localização na página de contacto, através do embed do
+              Google Maps. Esse serviço é prestado pela Google LLC, enquanto responsável
+              autónomo pelo tratamento dos dados recolhidos através da sua tecnologia.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4">
-              O embed do Google Maps permite visualizar a morada da RSF | Brokers diretamente
-              no website, sem obrigar o utilizador a abrir uma nova janela. Para esta
-              funcionalidade, a Google pode recolher dados técnicos como o endereço IP e
-              parâmetros do navegador, tratados em conformidade com a sua própria política de
-              privacidade. O utilizador pode optar por não visualizar o mapa, abrindo
-              diretamente o Google Maps no endereço indicado na página de contacto.
+              Na página de Contacto, o mapa só é carregado depois de o utilizador clicar
+              expressamente em &ldquo;Ver mapa&rdquo;, com aviso prévio de que a Google pode
+              definir cookies nesse momento. Até esse clique, não é carregado qualquer conteúdo
+              do Google Maps nem definido qualquer cookie. Depois do clique, a Google pode
+              recolher dados técnicos como o endereço IP e parâmetros do navegador, tratados em
+              conformidade com a sua própria política de privacidade. O utilizador pode optar
+              por não carregar o mapa, abrindo diretamente o Google Maps no endereço indicado
+              na página de contacto.
             </p>
             <p className="text-foreground/80 leading-relaxed mb-4">
               A RSF | Brokers não controla diretamente os cookies de terceiros nem o tratamento
