@@ -149,14 +149,14 @@ export function SiteHeader() {
                     item.href === "/seguros" ? (
                       <Accordion key={item.href} type="single" collapsible>
                         <AccordionItem value="seguros" className="border-b-0">
-                          <AccordionTrigger className="px-3 py-2.5 text-sm font-medium text-foreground/80 hover:bg-secondary/50 hover:no-underline rounded-md [&[data-state=open]]:bg-secondary/50">
+                          <AccordionTrigger className="px-3 py-2.5 font-sans text-sm font-medium text-foreground/80 hover:bg-secondary/50 hover:no-underline rounded-md [&[data-state=open]]:bg-secondary/50">
                             {item.label}
                           </AccordionTrigger>
                           <AccordionContent className="pb-1 pl-3">
                             <Accordion type="multiple" className="w-full">
                               {segurosGroups.map((group) => (
                                 <AccordionItem key={group.label} value={group.label} className="border-b-0">
-                                  <AccordionTrigger className="py-2 text-sm font-medium text-foreground/80 hover:no-underline">
+                                  <AccordionTrigger className="py-2 font-sans text-sm font-medium text-foreground/80 hover:no-underline">
                                     {group.label}
                                   </AccordionTrigger>
                                   <AccordionContent>
