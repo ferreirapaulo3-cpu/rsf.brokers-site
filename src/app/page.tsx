@@ -244,7 +244,7 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="mt-8 md:mt-12">
-            <SnapRow label="Avaliações no Google" mobileOnly itemClassName="w-[84%] sm:w-[46%]">
+            <SnapRow label="Avaliações no Google" mobileOnly itemClassName="w-[84%] sm:w-[46%]" gridClassName="md:grid-cols-2 lg:grid-cols-3">
             {googleReviews.map((r) => (
               <Card key={r.author} className="h-full border-border/70 bg-background">
                 <CardContent className="p-6 flex flex-col h-full">
