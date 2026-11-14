@@ -6,8 +6,9 @@
  * built: the project · v2.0.0 */
 import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Clock, ExternalLink as ExternalLinkIcon } from "lucide-react";
-import { site, nav } from "@/lib/site-data";
+import { site } from "@/lib/site-data";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn, discreetLinkOnDarkClass } from "@/lib/utils";
 
 // Cada link do footer leva "rounded-sm outline-none focus-visible:ring-2
@@ -107,32 +108,55 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        {/* Navigation + Insurance, merged into one compact column of wrapped inline links */}
+        {/* Seguros */}
         <div>
-          <h3 className="font-serif text-lg mb-3 text-accent">Navegação</h3>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm mb-5">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn("text-primary-foreground/80 hover:text-accent transition-colors", "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:text-accent")}
-              >
-                {item.label}
+          {/* Desktop: lista aberta, como sempre foi */}
+          <div className="hidden md:block">
+            <h3 className="font-serif text-lg mb-3 text-accent">Seguros</h3>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+              {insuranceLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn("text-primary-foreground/80 hover:text-accent transition-colors", "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:text-accent")}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link href="/seguros" className={cn(discreetLinkOnDarkClass, "hover:underline active:text-accent")}>
+                Ver todos os seguros
               </Link>
-            ))}
+            </div>
           </div>
-          <h3 className="font-serif text-lg mb-3 text-accent">Seguros</h3>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-            {insuranceLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn("text-primary-foreground/80 hover:text-accent transition-colors", "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:text-accent")}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link href="/seguros" className={cn(discreetLinkOnDarkClass, "hover:underline active:text-accent")}>
+
+          {/* Telemóvel: acordeão fechado por defeito */}
+          <div className="md:hidden">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="seguros" className="border-b-0">
+                <AccordionTrigger
+                  className={cn(
+                    "font-serif text-lg text-accent hover:no-underline [&>svg]:text-primary-foreground/70",
+                    "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                  )}
+                >
+                  Seguros
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                    {insuranceLinks.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn("text-primary-foreground/80 hover:text-accent transition-colors", "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:text-accent")}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <Link href="/seguros" className={cn(discreetLinkOnDarkClass, "hover:underline active:text-accent mt-3 inline-flex")}>
               Ver todos os seguros
             </Link>
           </div>
