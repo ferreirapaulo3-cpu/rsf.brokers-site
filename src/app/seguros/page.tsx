@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { PageHeader, Breadcrumbs, SectionTitle } from "@/components/site/layout";
 import { CTASection } from "@/components/site/cta-section";
 import { insurances, type Insurance } from "@/lib/site-data";
+import { cn, discreetLinkClass } from "@/lib/utils";
 
 const categories: {
   id: Insurance["category"];
@@ -91,7 +92,7 @@ export default function SegurosPage() {
                         </div>
                         <h3 className="font-serif text-lg text-primary mb-1.5 leading-snug">{item.name}</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{item.description}</p>
-                        <Link href={item.href} className="inline-flex items-center gap-1 text-sm font-semibold text-accent-ink hover:gap-1.5 transition-all mt-auto">
+                        <Link href={item.href} className={cn(discreetLinkClass, "hover:gap-1.5 transition-all mt-auto")}>
                           {item.hasDetailPage ? "Ver detalhes" : "Pedir orçamento"}
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>

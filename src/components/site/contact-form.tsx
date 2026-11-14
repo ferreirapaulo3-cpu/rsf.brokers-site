@@ -138,7 +138,7 @@ export function ContactForm() {
       </label>
       {errors.consent && <p className="text-xs text-destructive">{errors.consent.message}</p>}
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground">
+      <Button type="submit" size="lg" variant="accent" disabled={isSubmitting} className="w-full md:w-auto">
         {isSubmitting ? (
           <><Loader2 className="w-4 h-4 animate-spin" /> A enviar...</>
         ) : (

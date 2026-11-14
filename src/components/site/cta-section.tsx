@@ -59,16 +59,12 @@ export function CTASection({
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-          <Button
-            asChild
-            size="lg"
-            className={variant === "primary" ? "bg-accent hover:bg-accent/90 text-accent-foreground" : undefined}
-          >
+          <Button asChild size="lg" variant="accent">
             <Link href={primaryHref}>
               {primaryLabel} <ArrowRight className="w-4 h-4 ml-1" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant={variant === "primary" ? "outline-dark" : "outline"}>
             <a href={secondaryHref}>
               <Phone className="w-4 h-4" /> {secondaryLabel}
             </a>

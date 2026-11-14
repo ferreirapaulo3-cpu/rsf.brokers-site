@@ -10,6 +10,7 @@ import { HeroVideo } from "@/components/site/hero-video";
 import { CountUp } from "@/components/site/count-up";
 import { SectionTitle } from "@/components/site/layout";
 import { site, insurances, valueProps, partners, googleReviews, googleRating, googleReviewsUrl } from "@/lib/site-data";
+import { cn, discreetLinkClass } from "@/lib/utils";
 
 const heroStats = [
   { value: 27, label: "Anos de experiência" },
@@ -48,15 +49,10 @@ export default function HomePage() {
               Seguros para particulares e empresas, com comparação entre várias seguradoras.
             </h1>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-base">
+              <Button asChild size="lg" variant="accent" className="text-base">
                 <Link href="/pedir-orcamento">Pedir orçamento gratuito <ArrowRight className="w-4 h-4 ml-1" /></Link>
               </Button>
-              {/* hover:bg-accent/15 (herdado de variant="outline") é transparente, por isso
-                  sobre o fundo escuro desta secção dá um cinza baço em vez do dourado claro
-                  que mostra no botão de referência do cabeçalho (que está sobre fundo branco).
-                  #FCF5D9 é a cor sólida medida por pixel desse hover no cabeçalho — não uma
-                  aproximação — reproduz o mesmo resultado aqui independentemente do fundo. */}
-              <Button asChild size="lg" variant="outline" className="text-base hover:bg-[#fcf5d9]">
+              <Button asChild size="lg" variant="outline-dark" className="text-base">
                 <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a>
               </Button>
             </div>
@@ -90,7 +86,7 @@ export default function HomePage() {
                   <div className="p-5">
                     <h3 className="font-serif text-xl text-primary mb-1.5">{r.name}</h3>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{r.description}</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-ink group-hover:gap-2 transition-all">
+                    <span className={cn(discreetLinkClass, "group-hover:gap-2 transition-all")}>
                       Saber mais <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
@@ -99,9 +95,9 @@ export default function HomePage() {
             </SnapRow>
           </div>
           <div className="mt-10 text-center">
-            <Button asChild variant="outline" size="lg">
-              <Link href="/seguros">Ver todos os ramos disponíveis <ArrowRight className="w-4 h-4 ml-1" /></Link>
-            </Button>
+            <Link href="/seguros" className={discreetLinkClass}>
+              Ver todos os ramos disponíveis <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </div>
         </div>
       </section>
@@ -127,9 +123,9 @@ export default function HomePage() {
             </SnapRow>
           </div>
           <div className="mt-8 md:mt-10 text-center">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="/sobre">Conhecer a RSF | Brokers <ArrowRight className="w-4 h-4 ml-1" /></Link>
-            </Button>
+            <Link href="/sobre" className={discreetLinkClass}>
+              Conhecer a RSF | Brokers <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
           </div>
         </div>
       </section>
@@ -172,11 +168,11 @@ export default function HomePage() {
               ))}
             </ul>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              <Button asChild size="lg" variant="outline">
                 <Link href="/seguro-vida-credito-habitacao">Pedir simulação sem compromisso</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> {site.phones.mobile}</a>
+                <a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.mobile}</a>
               </Button>
             </div>
             <GoogleRatingBadge className="mt-4" />
@@ -263,8 +259,8 @@ export default function HomePage() {
               description="Atendimento direto, sem call center nem menus intermináveis. Telefone, email, WhatsApp ou visite a loja na Damaia."
             />
             <div className="grid gap-3 mt-8 sm:grid-cols-3">
-              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> {site.phones.fixed}</a></Button>
-              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> {site.phones.mobile}</a></Button>
+              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a></Button>
+              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.mobile}</a></Button>
               <Button asChild variant="outline" size="lg"><Link href="/contacto">Ver morada e mapa</Link></Button>
             </div>
           </div>
