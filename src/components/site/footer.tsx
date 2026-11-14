@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Clock, ExternalLink as ExternalLinkIcon } from "lucide-react";
 import { site, nav } from "@/lib/site-data";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
-import { cn } from "@/lib/utils";
+import { cn, discreetLinkOnDarkClass } from "@/lib/utils";
 
 // Cada link do footer leva "rounded-sm outline-none focus-visible:ring-2
 // focus-visible:ring-ring focus-visible:ring-offset-2
@@ -132,7 +132,7 @@ export function SiteFooter() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/seguros" className={cn("text-accent font-semibold hover:underline", "rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary active:text-accent")}>
+            <Link href="/seguros" className={cn(discreetLinkOnDarkClass, "hover:underline active:text-accent")}>
               Ver todos os seguros
             </Link>
           </div>

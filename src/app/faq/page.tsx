@@ -126,11 +126,6 @@ export default async function FaqPage() {
       <CTASection
         title="A sua pergunta não está aqui?"
         description="Contacte-nos para esclarecer o seu caso concreto. Respondemos normalmente em 1 dia útil."
-        primaryLabel="Contactar a RSF | Brokers"
-        primaryHref="/contacto"
-        secondaryLabel="Pedir orçamento"
-        secondaryHref="/pedir-orcamento"
-        variant="default"
       />
     </>
   );

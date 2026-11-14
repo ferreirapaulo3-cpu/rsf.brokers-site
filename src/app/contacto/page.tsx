@@ -151,9 +151,9 @@ export default function ContactoPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg">
+              <Button asChild size="lg" variant="outline">
                 <a href={`tel:${site.phones.fixedHref}`}>
-                  <Phone className="w-4 h-4" /> Ligar agora
+                  <Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">

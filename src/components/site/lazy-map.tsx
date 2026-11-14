@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site-data";
 
 export function LazyMap() {
@@ -17,13 +18,9 @@ export function LazyMap() {
             {site.address.postalCode} {site.address.city}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => setLoaded(true)}
-          className="mt-2 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
-        >
+        <Button type="button" onClick={() => setLoaded(true)} className="mt-2">
           Ver mapa
-        </button>
+        </Button>
         <p className="text-xs text-muted-foreground max-w-xs">
           Ao carregar o mapa, a Google pode definir cookies no seu navegador.
         </p>

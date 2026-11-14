@@ -78,7 +78,7 @@ export function SiteHeader() {
 
           <NavigationMenu viewport={false} className="hidden lg:flex max-w-none flex-1 justify-start">
             <NavigationMenuList className="gap-1">
-              {nav.map((item) =>
+              {nav.filter((item) => item.href !== "/pedir-orcamento").map((item) =>
                 item.href === "/seguros" ? (
                   <NavigationMenuItem key={item.href}>
                     <NavigationMenuTrigger className={cn(navLinkClass, "bg-transparent data-[state=open]:bg-secondary/50")}>
@@ -127,10 +127,10 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <Button asChild variant="outline" size="sm" className="hidden md:inline-flex lg:hidden 2xl:inline-flex">
               <a href={`tel:${site.phones.fixedHref}`}>
-                <Phone className="w-4 h-4" /> {site.phones.fixed}
+                <Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}
               </a>
             </Button>
-            <Button asChild size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button asChild size="sm" variant="accent">
               <Link href="/pedir-orcamento">Pedir orçamento</Link>
             </Button>
             <Sheet open={open} onOpenChange={setOpen}>
@@ -145,7 +145,7 @@ export function SiteHeader() {
                   <img src="/rsf-brokers.svg" alt="RSF | Brokers — Negócios Seguros" width={1584} height={672} className="h-12 w-auto max-w-[10rem] object-contain object-left" />
                 </SheetHeader>
                 <nav className="flex-1 flex flex-col gap-1 p-4">
-                  {nav.map((item) =>
+                  {nav.filter((item) => item.href !== "/pedir-orcamento").map((item) =>
                     item.href === "/seguros" ? (
                       <Accordion key={item.href} type="single" collapsible>
                         <AccordionItem value="seguros" className="border-b-0">
@@ -201,9 +201,9 @@ export function SiteHeader() {
                 </nav>
                 <div className="p-4 border-t flex flex-col gap-2">
                   <Button asChild variant="outline" size="sm">
-                    <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> {site.phones.fixed}</a>
+                    <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a>
                   </Button>
-                  <Button asChild size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground" onClick={() => setOpen(false)}>
+                  <Button asChild size="sm" variant="accent" onClick={() => setOpen(false)}>
                     <Link href="/pedir-orcamento">Pedir orçamento</Link>
                   </Button>
                 </div>
