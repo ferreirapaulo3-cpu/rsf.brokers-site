@@ -14,7 +14,8 @@ export default defineConfig({
     },
     env: {
       ASSETS: bindings.assets(),
-      SITE_URL: bindings.text("https://rsf-brokers.pt"),
+      // trocar para https://rsfbrokers.pt quando o domínio estiver ligado
+      SITE_URL: bindings.text("https://rsf-brokers.ferreirapaulo3.workers.dev"),
     },
   }),
 });
