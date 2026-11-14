@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone, ShieldCheck, Users, Briefcase, Star } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Users, Briefcase, Star, Car, Home as HomeIcon, HeartPulse, Plane } from "lucide-react";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -19,12 +19,12 @@ const heroStats = [
 ];
 
 const homeRamos = [
-  { image: "/images/paginas/seguro-automovel.webp", name: "Automóvel", description: "Cobertura para o seu carro, ao melhor equilíbrio entre preço e proteção.", href: "/seguros/automovel" },
-  { image: "/images/paginas/seguro-habitacao.webp", name: "Habitação", description: "Paredes, recheio e responsabilidade do seu lar protegidos em único contrato.", href: "/seguros/habitacao" },
-  { image: "/images/paginas/seguro-saude.webp", name: "Saúde e Vida", description: "Planos de saúde, vida risco e vida para crédito habitação.", href: "/seguros/saude" },
-  { image: "/images/paginas/seguro-empresas.webp", name: "Empresas", description: "RC, multirriscos, acidentes de trabalho e frotas, à medida do negócio.", href: "/seguros/empresas" },
-  { image: "/images/paginas/seguro-viagem.webp", name: "Viagem e Lazer", description: "Seguro de viagem, embarcações de recreio e caça.", href: "/seguros/viagem" },
-  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", name: "Seguro de vida do crédito habitação", description: "Reduza a mensalidade com seguro de vida individual.", href: "/seguro-vida-credito-habitacao" },
+  { image: "/images/paginas/seguro-automovel.webp", icon: Car, name: "Automóvel", description: "Cobertura para o seu carro, ao melhor equilíbrio entre preço e proteção.", href: "/seguros/automovel" },
+  { image: "/images/paginas/seguro-habitacao.webp", icon: HomeIcon, name: "Habitação", description: "Paredes, recheio e responsabilidade do seu lar protegidos em único contrato.", href: "/seguros/habitacao" },
+  { image: "/images/paginas/seguro-saude.webp", icon: HeartPulse, name: "Saúde e Vida", description: "Planos de saúde, vida risco e vida para crédito habitação.", href: "/seguros/saude" },
+  { image: "/images/paginas/seguro-empresas.webp", icon: Briefcase, name: "Empresas", description: "RC, multirriscos, acidentes de trabalho e frotas, à medida do negócio.", href: "/seguros/empresas" },
+  { image: "/images/paginas/seguro-viagem.webp", icon: Plane, name: "Viagem e Lazer", description: "Seguro de viagem, embarcações de recreio e caça.", href: "/seguros/viagem" },
+  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", icon: HomeIcon, name: "Seguro de vida do crédito habitação", description: "Reduza a mensalidade com seguro de vida individual.", href: "/seguro-vida-credito-habitacao" },
 ];
 
 export default function HomePage() {
@@ -76,7 +76,21 @@ export default function HomePage() {
             title="Seguros para todas as situações da vida"
             description="Encontre o seguro certo para a sua casa, carro, família, negócio ou viagem. Cada categoria liga a uma página dedicada com coberturas, vantagens e como pedir orçamento."
           />
-          <div className="mt-8 md:mt-12">
+          <ul className="md:hidden mt-8 rounded-lg border border-border divide-y divide-border overflow-hidden">
+            {homeRamos.map((r) => (
+              <li key={r.name}>
+                <Link
+                  href={r.href}
+                  className="flex items-center gap-3 min-h-12 px-4 py-3 bg-card text-sm font-medium text-foreground/90 hover:bg-secondary/50 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  <r.icon className="w-5 h-5 text-accent-ink flex-shrink-0" aria-hidden="true" />
+                  <span className="flex-1">{r.name}</span>
+                  <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="hidden md:block mt-8 md:mt-12">
             <SnapRow label="Ramos de seguros">
               {homeRamos.map((r) => (
                 <Link key={r.name} href={r.href} className="group block h-full rounded-lg overflow-hidden border border-border/70 bg-card hover:shadow-lg hover:border-primary/30 transition-all">
