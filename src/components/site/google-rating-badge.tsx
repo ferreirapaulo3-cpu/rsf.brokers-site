@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 type Props = {
   /** "light" para fundos claros, "dark" para fundos azuis (rodapé, barra superior). */
   tone?: "light" | "dark";
-  /** "compact" mostra só "4,8 ★ no Google · 26 avaliações" (a ligação é o próprio texto). */
+  /** "compact" mostra só "4,9 ★ no Google · 30 avaliações" (a ligação é o próprio texto). */
   size?: "full" | "compact";
   linkLabel?: string;
   className?: string;

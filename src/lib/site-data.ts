@@ -127,29 +127,39 @@ export const testimonials = [
 ];
 
 // Avaliações reais do Google (texto e autor mantidos tal como publicados).
-export const googleRating = { value: 4.8, count: 26 };
+export const googleRating = { value: 4.9, count: 30 };
 export const googleReviewsUrl =
   "https://www.google.com/maps/place/R.+Garcia+de+Orta+30,+Damaia,+2720-172+Amadora/@38.749019,-9.210936,17z/data=!3m1!4b1!4m6!3m5!1s0xd1eccdff46ed75b:0xfec7d80b6bd9d8d0!8m2!3d38.749019!4d-9.210936!16s%2Fg%2F11c1xt5dj1?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D";
 
 export const googleReviews = [
   {
-    author: "Centenário. Dep Financeiro Faturação",
-    text: "Trabalho com eles a mas de 10 anos , sempre prestativos e prontos a mudar e tentam sempre os melhores preços.",
+    author: "Rute Novais",
+    text: "Rigoroso, sempre disponível para ajudar a esclarecer questões e agilizar contactos para resolver as situações. Total confiança,",
     rating: 5,
   },
   {
-    author: "Rui Almeida",
-    text: "Este homem não falha! A qualquer hora atende e resolve tudo. Á mais de 20 anos que confio nele. É de confiança!",
+    author: "Centenário",
+    text: "Trabalho com eles a mas de 10 anos, sempre prestativos e prontos a mudar e tentam sempre os melhores preços.",
     rating: 5,
   },
   {
-    author: "Gonçalo Santa Bárbara",
-    text: "Sempre transparente, simpatia e acima de tudo dedicado na resolução dos assuntos!",
+    author: "Lucia Pineu",
+    text: "Muito satisfeita. Muito prestável e profissional.",
     rating: 5,
   },
   {
-    author: "Susana Felizardo",
-    text: "Sempre fui muito bem atendida! Recomendo os serviços 😝…",
+    author: "Vasco Nobre",
+    text: "Sempre disponível e com soluções. Muito satisfeito!",
+    rating: 5,
+  },
+  {
+    author: "João Setas",
+    text: "É um prazer enorme trabalhar em conjunto com a RSF Brockers, ainda mais quando o 'homem do leme' - Ramiro Sérgio Fernandes - é de um profissionalismo, seriedade e simpatia ímpares. Estás no bom caminho, continuamos juntos nesta caminhada.",
+    rating: 5,
+  },
+  {
+    author: "Victor Voctor",
+    text: "Estou muito satisfeito!!! Obrigado",
     rating: 5,
   },
 ];
