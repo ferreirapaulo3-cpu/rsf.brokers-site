@@ -173,7 +173,7 @@ export function SiteFooter() {
           <nav aria-labelledby="footer-legal-heading" className="md:text-right">
             <h2
               id="footer-legal-heading"
-              className="text-[0.6875rem] font-semibold text-primary-foreground/50 mb-2 text-center md:text-right"
+              className="text-[0.6875rem] font-semibold text-primary-foreground/70 mb-2 text-center md:text-right"
             >
               Informação legal
             </h2>
