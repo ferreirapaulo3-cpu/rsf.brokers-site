@@ -142,7 +142,7 @@ export function ContactForm() {
         {isSubmitting ? (
           <><Loader2 className="w-4 h-4 animate-spin" /> A enviar...</>
         ) : (
-          <>Enviar mensagem <ArrowRight className="w-4 h-4 ml-1" /></>
+          <>Enviar mensagem <ArrowRight className="cta-arrow w-4 h-4 ml-1" /></>
         )}
       </Button>
       <p className="text-xs text-muted-foreground">

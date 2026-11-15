@@ -94,7 +94,7 @@ export default function SegurosPage() {
                         <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{item.description}</p>
                         <Link href={item.href} className={cn(discreetLinkClass, "hover:gap-1.5 transition-all mt-auto")}>
                           {item.hasDetailPage ? "Ver detalhes" : "Pedir orçamento"}
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className="cta-arrow w-3.5 h-3.5" />
                         </Link>
                       </CardContent>
                     </Card>

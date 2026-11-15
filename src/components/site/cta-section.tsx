@@ -61,7 +61,7 @@ export function CTASection({
         <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
           <Button asChild size="lg" variant="accent">
             <Link href={primaryHref}>
-              {primaryLabel} <ArrowRight className="w-4 h-4 ml-1" />
+              {primaryLabel} <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
             </Link>
           </Button>
           <Button asChild size="lg" variant={variant === "primary" ? "outline-dark" : "outline"}>

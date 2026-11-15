@@ -158,7 +158,7 @@ export default function ContactoPage() {
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/pedir-orcamento">
-                  Pedir orçamento <ArrowRight className="w-4 h-4 ml-1" />
+                  Pedir orçamento <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
                 </Link>
               </Button>
             </div>
