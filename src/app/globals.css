@@ -176,6 +176,31 @@
     opacity: 1;
     transform: none;
   }
+
+  /* Seta de CTA: desliza 3px para a direita em hover (com rato) e focus-visible.
+     Classe partilhada — aplica-se ao ícone, o pai (link/botão) é que desencadeia. */
+  .cta-arrow {
+    transition: transform 180ms ease-out;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    a:hover .cta-arrow,
+    button:hover .cta-arrow {
+      transform: translateX(3px);
+    }
+  }
+  a:focus-visible .cta-arrow,
+  button:focus-visible .cta-arrow {
+    transform: translateX(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta-arrow {
+      transition: none;
+    }
+    a:hover .cta-arrow, button:hover .cta-arrow,
+    a:focus-visible .cta-arrow, button:focus-visible .cta-arrow {
+      transform: none;
+    }
+  }
 }
 
 

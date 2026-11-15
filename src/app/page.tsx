@@ -50,7 +50,7 @@ export default function HomePage() {
             </h1>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" variant="accent" className="text-base">
-                <Link href="/pedir-orcamento">Pedir orçamento gratuito <ArrowRight className="w-4 h-4 ml-1" /></Link>
+                <Link href="/pedir-orcamento">Pedir orçamento gratuito <ArrowRight className="cta-arrow w-4 h-4 ml-1" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline-dark" className="text-base">
                 <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a>
@@ -85,7 +85,7 @@ export default function HomePage() {
                 >
                   <r.icon className="w-5 h-5 text-accent-ink flex-shrink-0" aria-hidden="true" />
                   <span className="flex-1">{r.name}</span>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
+                  <ArrowRight className="cta-arrow w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
                 </Link>
               </li>
             ))}
@@ -101,7 +101,7 @@ export default function HomePage() {
                     <h3 className="font-serif text-xl text-primary mb-1.5">{r.name}</h3>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{r.description}</p>
                     <span className={cn(discreetLinkClass, "group-hover:gap-2 transition-all")}>
-                      Saber mais <ArrowRight className="w-3.5 h-3.5" />
+                      Saber mais <ArrowRight className="cta-arrow w-3.5 h-3.5" />
                     </span>
                   </div>
                 </Link>
@@ -110,7 +110,7 @@ export default function HomePage() {
           </div>
           <div className="mt-10 text-center">
             <Link href="/seguros" className={discreetLinkClass}>
-              Ver todos os ramos disponíveis <ArrowRight className="w-4 h-4 ml-1" />
+              Ver todos os ramos disponíveis <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
             </Link>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
           </div>
           <div className="mt-8 md:mt-10 text-center">
             <Link href="/sobre" className={discreetLinkClass}>
-              Conhecer a RSF | Brokers <ArrowRight className="w-4 h-4 ml-1" />
+              Conhecer a RSF | Brokers <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
             </Link>
           </div>
         </div>
