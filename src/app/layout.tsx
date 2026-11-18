@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
+import { WhatsAppFloat } from "@/components/site/whatsapp-float";
 import { SITE_URL } from "@/lib/site-url";
 import { LocalBusinessJsonLd } from "@/components/site/local-business-jsonld";
 
@@ -94,6 +95,7 @@ export default function RootLayout({
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <WhatsAppFloat />
         <Toaster />
       </body>
     </html>

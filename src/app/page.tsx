@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone, ShieldCheck, Users, Briefcase, Star, Car, Home as HomeIcon, HeartPulse, Plane } from "lucide-react";
+import { ArrowRight, Phone, Smartphone, Mail, MapPin, Facebook, Clock, Star, Car, Home as HomeIcon, HeartPulse, Briefcase, Plane } from "lucide-react";
 import { GoogleRatingBadge } from "@/components/site/google-rating-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,11 @@ import { PartnersCarousel } from "@/components/site/partners-carousel";
 import { HeroVideo } from "@/components/site/hero-video";
 import { CountUp } from "@/components/site/count-up";
 import { SectionTitle } from "@/components/site/layout";
-import { site, insurances, valueProps, partners, googleReviews, googleRating, googleReviewsUrl } from "@/lib/site-data";
+import { QuoteForm } from "@/components/site/quote-form";
+import { ContactForm } from "@/components/site/contact-form";
+import { LazyMap } from "@/components/site/lazy-map";
+import { LegalAccordion } from "@/components/site/legal-accordion";
+import { site, partners, googleReviews, googleRating, googleReviewsUrl } from "@/lib/site-data";
 import { cn, discreetLinkClass } from "@/lib/utils";
 
 const heroStats = [
@@ -19,23 +23,27 @@ const heroStats = [
 ];
 
 const homeRamos = [
-  { image: "/images/paginas/seguro-automovel.webp", icon: Car, name: "Automóvel", description: "Cobertura para o seu carro, ao melhor equilíbrio entre preço e proteção.", href: "/seguros/automovel" },
-  { image: "/images/paginas/seguro-habitacao.webp", icon: HomeIcon, name: "Habitação", description: "Paredes, recheio e responsabilidade do seu lar protegidos em único contrato.", href: "/seguros/habitacao" },
-  { image: "/images/paginas/seguro-saude.webp", icon: HeartPulse, name: "Saúde e Vida", description: "Planos de saúde, vida risco e vida para crédito habitação.", href: "/seguros/saude" },
-  { image: "/images/paginas/seguro-empresas.webp", icon: Briefcase, name: "Empresas", description: "RC, multirriscos, acidentes de trabalho e frotas, à medida do negócio.", href: "/seguros/empresas" },
-  { image: "/images/paginas/seguro-viagem.webp", icon: Plane, name: "Viagem e Lazer", description: "Seguro de viagem, embarcações de recreio e caça.", href: "/seguros/viagem" },
-  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", icon: HomeIcon, name: "Seguro de vida do crédito habitação", description: "Reduza a mensalidade com seguro de vida individual.", href: "/seguro-vida-credito-habitacao" },
+  { image: "/images/paginas/seguro-automovel.webp", icon: Car, name: "Automóvel", description: "Cobertura para o seu carro, ao melhor equilíbrio entre preço e proteção." },
+  { image: "/images/paginas/seguro-habitacao.webp", icon: HomeIcon, name: "Habitação", description: "Paredes, recheio e responsabilidade do seu lar protegidos em único contrato." },
+  { image: "/images/paginas/seguro-saude.webp", icon: HeartPulse, name: "Saúde e Vida", description: "Planos de saúde, vida risco e vida para crédito habitação." },
+  { image: "/images/paginas/seguro-empresas.webp", icon: Briefcase, name: "Empresas", description: "RC, multirriscos, acidentes de trabalho e frotas, à medida do negócio." },
+  { image: "/images/paginas/seguro-viagem.webp", icon: Plane, name: "Viagem e Lazer", description: "Seguro de viagem, embarcações de recreio e caça." },
+  { image: "/images/paginas/seguro-vida-credito-habitacao.webp", icon: HomeIcon, name: "Seguro de vida do crédito habitação", description: "Reduza a mensalidade com seguro de vida individual." },
+];
+
+const contactCards = [
+  { icon: Phone, label: "Telefone fixo", value: site.phones.fixed, href: `tel:${site.phones.fixedHref}`, note: "Chamada para rede fixa nacional" },
+  { icon: Smartphone, label: "Telefone móvel", value: site.phones.mobile, href: `tel:${site.phones.mobileHref}`, note: "Chamada para rede móvel nacional" },
+  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}`, note: "Resposta típica em 1 dia útil" },
+  { icon: MapPin, label: "Morada", value: `${site.address.line1}, ${site.address.postalCode} ${site.address.city}`, href: site.address.mapsUrl, note: "Ver no Google Maps", external: true },
 ];
 
 export default function HomePage() {
-  const featuredInsurances = insurances.filter(i => i.hasDetailPage).slice(0, 8);
-
   return (
     <>
-      {/* HERO */}
-      <section className="relative bg-primary text-primary-foreground overflow-hidden">
+      {/* APRESENTAÇÃO */}
+      <section id="inicio" className="relative bg-primary text-primary-foreground overflow-hidden scroll-mt-20">
         <HeroVideo />
-        {/* Camada escura em degradé (#2b3e4c): garante contraste AA do texto sobre as cenas claras. */}
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/[0.80] via-primary/[0.68] to-primary/[0.38] max-md:bg-primary/[0.72] max-md:bg-none"
@@ -50,7 +58,7 @@ export default function HomePage() {
             </h1>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" variant="accent" className="text-base">
-                <Link href="/pedir-orcamento">Pedir orçamento gratuito <ArrowRight className="cta-arrow w-4 h-4 ml-1" /></Link>
+                <Link href="#orcamento">Pedir orçamento gratuito <ArrowRight className="cta-arrow w-4 h-4 ml-1" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline-dark" className="text-base">
                 <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a>
@@ -68,32 +76,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RAMOS DESTAQUE */}
-      <section className="py-12 md:py-28">
+      {/* SERVIÇOS (RAMOS) */}
+      <section id="servicos" className="py-12 md:py-28 scroll-mt-20">
         <div className="container-rsf">
           <SectionTitle
-            eyebrow="Ramos principais"
+            eyebrow="Serviços"
             title="Seguros para todas as situações da vida"
-            description="Encontre o seguro certo para a sua casa, carro, família, negócio ou viagem. Cada categoria liga a uma página dedicada com coberturas, vantagens e como pedir orçamento."
+            description="Encontre o seguro certo para a sua casa, carro, família, negócio ou viagem. Peça uma análise sem compromisso para o ramo que precisa."
           />
           <ul className="md:hidden mt-8 rounded-lg border border-border divide-y divide-border overflow-hidden">
             {homeRamos.map((r) => (
               <li key={r.name}>
-                <Link
-                  href={r.href}
+                <a
+                  href="#orcamento"
                   className="flex items-center gap-3 min-h-12 px-4 py-3 bg-card text-sm font-medium text-foreground/90 hover:bg-secondary/50 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   <r.icon className="w-5 h-5 text-accent-ink flex-shrink-0" aria-hidden="true" />
                   <span className="flex-1">{r.name}</span>
                   <ArrowRight className="cta-arrow w-4 h-4 text-muted-foreground flex-shrink-0" aria-hidden="true" />
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
           <div className="hidden md:block mt-8 md:mt-12">
             <SnapRow label="Ramos de seguros">
               {homeRamos.map((r) => (
-                <Link key={r.name} href={r.href} className="group block h-full rounded-lg overflow-hidden border border-border/70 bg-card hover:shadow-lg hover:border-primary/30 transition-all">
+                <a key={r.name} href="#orcamento" className="group block h-full rounded-lg overflow-hidden border border-border/70 bg-card hover:shadow-lg hover:border-primary/30 transition-all">
                   <div className="relative aspect-[16/10] overflow-hidden bg-primary/10">
                     <img src={r.image.replace(".webp", "-640.webp")} srcSet={`${r.image.replace(".webp", "-640.webp")} 640w, ${r.image} 1200w`} sizes="(min-width: 1024px) 400px, 80vw" alt="" width={1200} height={675} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
@@ -101,101 +109,18 @@ export default function HomePage() {
                     <h3 className="font-serif text-xl text-primary mb-1.5">{r.name}</h3>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{r.description}</p>
                     <span className={cn(discreetLinkClass, "group-hover:gap-2 transition-all")}>
-                      Saber mais <ArrowRight className="cta-arrow w-3.5 h-3.5" />
+                      Pedir orçamento <ArrowRight className="cta-arrow w-3.5 h-3.5" />
                     </span>
                   </div>
-                </Link>
+                </a>
               ))}
             </SnapRow>
-          </div>
-          <div className="mt-10 text-center">
-            <Link href="/seguros" className={discreetLinkClass}>
-              Ver todos os ramos disponíveis <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* PORQUÊ RSF */}
-      <section className="py-12 md:py-28 bg-secondary/60">
-        <div className="container-rsf">
-          <SectionTitle
-            eyebrow="Porquê a RSF | Brokers"
-            title="Não vendemos um seguro. Recomendamos a solução certa."
-            description="Como mediadores multimarca, não representamos nenhuma seguradora em particular. O nosso papel é analisar, comparar e recomendar — e acompanhar em cada passo do contrato."
-            align="center"
-          />
-          <div className="mt-8 md:mt-14">
-            <SnapRow label="Porquê a RSF | Brokers" mobileOnly itemClassName="w-[78%] sm:w-[44%]">
-            {valueProps.map((v, i) => (
-              <div key={v.title} className="h-full bg-background p-6 rounded-lg border border-border/60 hover:shadow-md transition-all">
-                <div className="font-serif text-3xl text-accent-ink mb-3">{String(i + 1).padStart(2, "0")}</div>
-                <h3 className="font-serif text-lg text-primary mb-2 leading-snug">{v.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
-              </div>
-            ))}
-            </SnapRow>
-          </div>
-          <div className="mt-8 md:mt-10 text-center">
-            <Link href="/sobre" className={discreetLinkClass}>
-              Conhecer a RSF | Brokers <ArrowRight className="cta-arrow w-4 h-4 ml-1" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SEGURO DE VIDA / CRÉDITO HABITAÇÃO DESTAQUE */}
-      <section className="py-12 md:py-28">
-        <div className="container-rsf grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-primary/10 order-2 lg:order-1">
-            <img
-              src="/images/credito-habitacao.webp"
-              srcSet="/images/credito-habitacao-640.webp 640w, /images/credito-habitacao.webp 1024w"
-              sizes="(min-width: 1024px) 500px, 92vw"
-              alt="Moradia unifamiliar com telhado de telha cerâmica e jardim"
-              width={1024}
-              height={572}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <Badge variant="secondary" className="mb-4 bg-accent/15 text-accent-ink border-accent/30">Destaque</Badge>
-            <h2 className="font-serif text-3xl md:text-4xl text-primary mb-5 leading-tight">
-              Tem crédito habitação? Reduza a sua mensalidade.
-            </h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              Peça uma simulação de seguro de vida associado ao crédito habitação, sem compromisso.
-              Não é obrigatório contratar o seguro com o banco — pode escolher livremente a melhor solução.
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Seguro de vida individual associado ao empréstimo",
-                "Possibilidade de reduzir a prestação mensal",
-                "Sem exames médicos para capital em dívida inferior a 300.000€",
-                "Coberturas adicionais: doenças graves, incapacidade, desemprego",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-2.5">
-                  <ShieldCheck className="w-5 h-5 text-accent-ink mt-0.5 flex-shrink-0" />
-                  <span className="text-foreground/90">{b}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" variant="outline">
-                <Link href="/seguro-vida-credito-habitacao">Pedir simulação sem compromisso</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.mobile}</a>
-              </Button>
-            </div>
-            <GoogleRatingBadge className="mt-4" />
           </div>
         </div>
       </section>
 
       {/* SEGURADORAS PARCEIRAS */}
-      <section className="py-12 md:py-24 bg-primary text-primary-foreground">
+      <section id="seguradoras" className="py-12 md:py-24 bg-primary text-primary-foreground scroll-mt-20">
         <div className="container-rsf">
           <SectionTitle
             eyebrow="Seguradoras parceiras"
@@ -209,11 +134,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* O QUE DIZEM OS NOSSOS CLIENTES */}
-      <section className="py-12 md:py-28 bg-secondary/60">
+      {/* TESTEMUNHOS (AVALIAÇÕES GOOGLE) */}
+      <section id="testemunhos" className="py-12 md:py-28 bg-secondary/60 scroll-mt-20">
         <div className="container-rsf">
           <SectionTitle
-            eyebrow="Avaliações"
+            eyebrow="Testemunhos"
             title="O que dizem os nossos clientes"
             align="center"
           />
@@ -263,24 +188,106 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CONTACTO RÁPIDO */}
-      <section className="py-12 md:py-24 bg-secondary/60 border-y border-border">
-        <div className="container-rsf grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <SectionTitle
-              eyebrow="Contacto rápido"
-              title="Prefere falar com a RSF | Brokers?"
-              description="Atendimento direto, sem call center nem menus intermináveis. Telefone, email, WhatsApp ou visite a loja na Damaia."
-            />
-            <div className="grid gap-3 mt-8 sm:grid-cols-3">
-              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a></Button>
-              <Button asChild variant="outline" size="lg"><a href={`tel:${site.phones.mobileHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.mobile}</a></Button>
-              <Button asChild variant="outline" size="lg"><Link href="/contacto">Ver morada e mapa</Link></Button>
+      {/* FORMULÁRIO DE ORÇAMENTO */}
+      <section id="orcamento" className="py-12 md:py-28 scroll-mt-20">
+        <div className="container-rsf max-w-3xl">
+          <SectionTitle
+            eyebrow="Orçamento"
+            title="Peça um orçamento. Sem compromisso."
+            description="Análise gratuita. Recebemos os dados, comparamos propostas entre seguradoras e apresentamos uma recomendação por escrito."
+            align="center"
+          />
+          <Card className="mt-10 border-border/70">
+            <CardContent className="p-6 md:p-8">
+              <QuoteForm />
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* CONTACTOS */}
+      <section id="contactos" className="py-12 md:py-28 bg-secondary/60 border-y border-border scroll-mt-20">
+        <div className="container-rsf">
+          <SectionTitle
+            eyebrow="Contactos"
+            title="Fale com a RSF | Brokers"
+            description="Atendimento direto, sem call center. Telefone, WhatsApp, email, mapa ou formulário — escolha o canal que lhe for mais cómodo."
+          />
+
+          <div className="grid lg:grid-cols-2 gap-10 items-start mt-10">
+            {/* LEFT: cards + map */}
+            <div>
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                {contactCards.map((c) => {
+                  const Icon = c.icon;
+                  const external = "external" in c && c.external;
+                  return (
+                    <a key={c.label} href={c.href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+                      <Card className="h-full bg-background border-border hover:border-primary/30 transition-colors cursor-pointer">
+                        <CardContent className="p-5">
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-lg bg-accent/15 text-accent-ink grid place-items-center flex-shrink-0">
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            <div className="text-[0.8125rem] uppercase tracking-widest font-semibold text-muted-foreground">
+                              {c.label}
+                            </div>
+                          </div>
+                          <div className="font-serif text-lg text-primary mb-1 break-words">{c.value}</div>
+                          <div className="text-xs text-muted-foreground leading-relaxed">{c.note}</div>
+                        </CardContent>
+                      </Card>
+                    </a>
+                  );
+                })}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <Button asChild size="lg" variant="outline">
+                  <a href={`tel:${site.phones.fixedHref}`}><Phone className="w-4 h-4" /> Ligar: {site.phones.fixed}</a>
+                </Button>
+                <Button asChild size="lg" className="bg-[#25D366] hover:bg-[#1ebe5a] text-white">
+                  <a href="https://wa.me/351933100964" target="_blank" rel="noopener noreferrer">
+                    WhatsApp: {site.phones.mobile}
+                  </a>
+                </Button>
+              </div>
+
+              <h3 className="font-serif text-xl text-primary mb-4">Onde estamos</h3>
+              <LazyMap />
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                O mapa é fornecido pelo Google Maps e só é carregado após o clique em &ldquo;Ver mapa&rdquo;.
+              </p>
+
+              <div className="flex items-center gap-3 mt-6 text-sm text-muted-foreground">
+                <Clock className="w-4 h-4 flex-shrink-0" /> Seg. a Sex., 9h00 às 19h00
+              </div>
+              <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
+                <Facebook className="w-4 h-4 flex-shrink-0" />
+                <Link href={site.facebook} target="_blank" rel="noopener" className="hover:text-primary transition-colors">
+                  /rsf.brokers
+                </Link>
+              </div>
+              <GoogleRatingBadge className="mt-4" linkLabel="Ver avaliações no Google" />
             </div>
+
+            {/* RIGHT: contact form */}
+            <Card className="bg-background border-border">
+              <CardContent className="p-6 md:p-8">
+                <h3 className="font-serif text-xl text-primary mb-4">Envie-nos a sua mensagem</h3>
+                <ContactForm />
+              </CardContent>
+            </Card>
           </div>
-          <div className="hidden md:grid grid-cols-2 gap-4">
-            <Card><CardContent className="p-6"><Users className="w-7 h-7 text-accent-ink mb-3" /><div className="font-serif text-2xl text-primary">Particulares</div><p className="text-sm text-muted-foreground mt-1">Soluções para si, para a sua casa, carro e família.</p></CardContent></Card>
-            <Card><CardContent className="p-6"><Briefcase className="w-7 h-7 text-accent-ink mb-3" /><div className="font-serif text-2xl text-primary">Empresas</div><p className="text-sm text-muted-foreground mt-1">Coberturas adaptadas a cada atividade e dimensão.</p></CardContent></Card>
+        </div>
+      </section>
+
+      {/* INFORMAÇÃO LEGAL */}
+      <section id="legal" className="py-12 md:py-20 border-t border-border scroll-mt-20">
+        <div className="container-rsf">
+          <SectionTitle eyebrow="Informação legal" title="Políticas e informação do mediador" align="center" />
+          <div className="mt-10">
+            <LegalAccordion />
           </div>
         </div>
       </section>
